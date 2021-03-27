@@ -36,12 +36,24 @@ anotherPerson ={
 
 console.log(anotherPerson)
 
-function combine(f1:number | string ,f2:number){
-  if(typeof f1 == "string"){
-    return f1+f2;
+type Combinable =  number | string;
+type ConversionDescriptor = "as-number" | "as-text";
+
+function combine(f1: Combinable ,f2: Combinable ,resultType: ConversionDescriptor){
+  let result 
+  if(typeof f1 === "number" && typeof f2  === "number" ){
+    result = f1 + f2;
+  } else {
+    result  = f1.toString() + f2.toString();
   }
-  return f1 + f2;
+
+  if(resultType === "as-number"){
+    result = Number(result)
+  } else {
+    result = String(result);
+  }
+  return result;
 }
 
-const combinedAges = combine("Max: ",26);
+const combinedAges = combine("30","26","as-number");
 console.log(combinedAges)
