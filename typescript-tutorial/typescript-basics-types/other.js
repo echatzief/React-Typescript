@@ -1,10 +1,11 @@
-function add(n1, n2) {
-    return (n1 + n2);
+var userInput;
+var userName;
+userInput = 5;
+userInput = "Max";
+if (typeof userInput === "string") {
+    userName = userInput;
 }
-function printResult(n) {
-    console.log("Result: ", n);
+function generateError(message, code) {
+    throw { message: message, errorCode: code };
 }
-printResult(add(5, 12));
-var combineValues;
-combineValues = add;
-console.log(combineValues(1, 2));
+generateError("An error occured", 500);
